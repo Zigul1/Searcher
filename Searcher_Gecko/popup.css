@@ -1,0 +1,33 @@
+.topButtons {
+	border: none;
+	background-Color: none;
+	padding: 0;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+}
+
+.button {
+	display: flex;
+	justify-content: space-between;
+	font-size: 14px;
+}
+
+.fontOk {
+	font-family: Sans-serif;
+}
+
+.sectionTitle {
+	background-color: #ab9cd4;
+	color: #000000;
+	font-size: 14px;
+	text-align: center;
+	font-weight: bold;
+	font-family: Sans-serif;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}

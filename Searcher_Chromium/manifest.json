@@ -1,0 +1,41 @@
+{
+	"manifest_version": 3,
+	"name": "Searcher",
+	"version": "1.0.0",
+	"description": "Make your searches quicker: select the text in the webpage or type it and then use the right click menu or the extension in the browser toolbar. It can be used also with external documents: just copy the text and choose in the toolbar menu where to search for it among the different choices (including AI chatbots, maps and reverse image search).",
+	"icons": {
+		"16": "/icons/icon16.png",
+		"32": "/icons/icon32.png",
+		"48": "/icons/icon48.png",
+		"128": "/icons/icon128.png"
+	},
+	"permissions": [
+		"contextMenus",
+		"activeTab",
+		"tabs",
+		"scripting",
+		"clipboardRead",
+		"clipboardWrite",
+		"storage"
+	],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content.js"],
+			"run_at": "document_start"
+		}
+	],
+	"action": {
+		"default_popup": "popup.html",
+		"default_icons": {
+			"16": "/icons/icon16.png",
+			"32": "/icons/icon32.png",
+			"48": "/icons/icon48.png",
+			"128": "/icons/icon128.png"
+		},
+		"default_title": "Searcher"
+	}
+}

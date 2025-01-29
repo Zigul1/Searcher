@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Searcher </title>
+	<link rel="stylesheet" href="popup.css">
+</head>
+<body>
+	<div class="button">
+		<button id="lightButton" class="topButtons"> <img src="\icons\light.png" alt="light mode button"></img> </button>
+		<button id="darkButton" class="topButtons"> <img src="\icons\dark.png" alt="dark mode button"></img> </button>
+		<b style="font-size: 18px"> SEARCHER </b>
+		<button id="itaButton" class="topButtons"> <img src="\icons\IT.png" alt="italian button"></img> </button>
+		<button id="engButton" class="topButtons"> <img src="\icons\EN.png" alt="english button"></img> </button>
+	</div>
+	<div>
+		<center style="margin-top: 15px;"><input type="checkbox" id="toggleSwitch">
+		<label for="toggleSwitch" id="instruct" style="margin-top: 10px; font-weight: bold;">ISTRUZIONI</label>
+		</center>
+	</div>
+	<div>
+		<p class="hidden" id="infos1" style="margin: 5px">
+			<b>1a</b> - <span id="text1">Seleziona il testo nella pagina web oppure</span><br>
+			<b>1b</b> - <span id="text2">copia il testo da un documento esterno oppure</span><br>
+			<b>1c</b> - <span id="text3">scrivi il testo qui sotto e premi OK</span><br>
+			<b>2</b> - <span id="choice">Scegli sotto dove cercare il testo</span>
+		</p>
+	</div>
+	<div>
+		<form action="">
+			<input type="text" id="textInput" name="text" placeholder="..." style="margin-top: 10px; width: 250px"> <button id="copyButton" style="margin-top: 10px; margin-left: 5px"><b>OK</b></button>
+		</form>
+	</div>
+    <div>
+		<p class="sectionTitle" style="margin-top: 20px;">
+			I N F O
+		</p>
+		<p class="button">
+			<button id="Wiki"><b>Wikipedia</b></button>
+			<button id="Tube" style="margin-left:30px;"><b>YouTube</b></button>
+			<button id="archive" style="margin-left:30px;"><b>archive.org</b></button>
+		</p>
+	</div>
+    <div>
+		<p class="sectionTitle" id="AI">
+			A I - C H A T B O T
+		</p>
+		<p class="button">
+			<button id="fAi"><b>Felo</b></button>
+			<button id="pAi" style="margin-left:30px;"><b>Phind</b></button>
+			<button id="yAi" style="margin-left:30px;"><b>You</b></button>
+			<button id="allAi" style="margin-left:30px; width: 55px; font-weight: bold;">TUTTI</button>
+		</p>
+	</div>	
+	<div>
+		<p class="sectionTitle" id="ma">
+			M A P P E
+		</p>
+	</div>
+	<div>
+		<p class="button">
+			<button id="ddgM"><b>DuckDuckGo</b></button>
+			<button id="gM"><b>Google</b></button>
+			<button id="osM"><b>OpenStreetMap</b></button>
+		</p>
+	</div>
+	<div>
+		<p class="sectionTitle" id="img">
+			I M M A G I N I
+		</p>
+	</div>
+    <div>
+		<p class="button">
+			<button id="bImg"><b>Bing</b></button>
+			<button id="gImg"><b>Google</b></button>
+			<button id="yImg"><b>Yandex</b></button>
+			<button id="allImg" style="width: 55px; font-weight: bold;"><b>TUTTI</b></button>
+		</p>
+	</div>
+		<p class="sectionTitle" id="imgR">
+			I M M A G I N I (ricerca inversa)
+		</p>
+	<div>
+		<p class="hidden" id="infos2" style="margin: 5px;">
+			<b>1</b> - <span id="text4">Copia il percorso dell'immagine (tasto destro)</span><br>
+			<b>2</b> - <span id="text5">Scegli dove cercare l'immagine</span><br>
+		</p>
+	</div>
+    <div>
+		<p class="button">
+			<button id="bImgR"><b>Bing</b></button>
+			<button id="gImgR" style="margin-left: 5px;"><b>Google</b></button>
+			<button id="tImgR" style="margin-left: 5px;"><b>TinEye</b></button>
+			<button id="yImgR" style="margin-left: 5px;"><b>Yandex</b></button>
+			<button id="allImgR" style="margin-left: 5px; width: 55px; font-weight: bold;"><b>TUTTI</b></button>
+		</p>
+	</div>
+<script src="popup.js"></script>
+</body>
+</html>
