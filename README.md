@@ -29,8 +29,11 @@ This extension has two version, one for *Chromium browsers* (**Chrome**, **Brave
 ## How to use it
 
 Once the extension is loaded in the browser, it will show an **icon on the toolbar**; clicking on the icon will open the **popup menu** with all the available options. It has light or dark mode and two languages (English or Italian). For more usage details, click on *Instructions*.
+![darkEn](https://github.com/user-attachments/assets/cfd228ba-adbb-402d-9fdc-0da86099c95c)
+![lightIt](https://github.com/user-attachments/assets/2f7d208d-8bee-442c-9291-d6e8adfba610)
 
 On the **right click menu**, the submenu *Searcher* is added with the same functions, exept the custom text field.
+![rClick](https://github.com/user-attachments/assets/6c661468-dcdc-464c-a7b0-a2f497e29237)
 
 
 ## Permissions
