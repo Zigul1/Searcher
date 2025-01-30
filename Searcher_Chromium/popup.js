@@ -263,18 +263,18 @@ document.getElementById('allAi').addEventListener('click', function() {
 				let phAddress = phAi + intro + text;
 				let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 				let fAddress = fAi + intro + text;
-				window.open(phAddress, "_blank");
-				window.open(yAddress, "_blank");
-				window.open(fAddress, "_blank");
+				chrome.tabs.create({ url: phAddress });
+				chrome.tabs.create({ url: yAddress });
+				chrome.tabs.create({ url: fAddress });
             } else {
                 navigator.clipboard.readText().then(function (text) {
                     text = text.replace(/ /g, "+");
 					let phAddress = phAi + intro + text;
 					let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = fAi + intro + text;
-					window.open(phAddress, "_blank");
-					window.open(yAddress, "_blank");
-					window.open(fAddress, "_blank");                
+					chrome.tabs.create({ url: phAddress });
+					chrome.tabs.create({ url: yAddress });
+					chrome.tabs.create({ url: fAddress });
 				});
                 return;
             }
@@ -476,13 +476,13 @@ document.getElementById('allImgR').addEventListener('click', function() {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		navigator.clipboard.readText().then(function (text) {
 			let bSearch = "https://www.bing.com/images/searchbyimage?FORM=IRSBIQ&cbir=sbi&imgurl=" + text;
-			window.open(bSearch, "_blank");
-			let gSearch = "https://lens.google.com/uploadbyurl?url=" + text;
-			window.open(gSearch, "_blank");
+			chrome.tabs.create({ url: bSearch });
+			let gSearch = "https://lens.google.com/uploadbyurl?url=" + text ;
+			chrome.tabs.create({ url: gSearch });
 			let tSearch = "https://tineye.com/search/?url=" + text + "&rpt=imageview";
-			window.open(tSearch, "_blank");
+			chrome.tabs.create({ url: tSearch });
 			let ySearch = "https://yandex.com/images/search?source=collections&&url=" + text + "&rpt=imageview";
-			window.open(ySearch, "_blank");
+			chrome.tabs.create({ url: ySearch });
 		});
 	});
 });
