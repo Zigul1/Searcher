@@ -3,7 +3,7 @@
 
 ## What *Searcher* does
 
-*Searcher* is a multi-browser extension (Manifest V3) that allows the user to set a text to be used as search paramenter in different sites; the text can be set by:
+*Searcher* is a multi-browser extension (Manifest V3) that allows the user to set a text to be used as search parameter in different sites; the text can be set by:
 - **selecting** it directly on a webpage, using the mouse or any cursor
 - **typing** it in the popup text field (see below)
 - **copying** it from a local file, like a PDF or other document formats.
@@ -18,11 +18,11 @@ The user can search for the chosen text:
 
 If the user copy an *image web address* (not the image itself), he can also make a **reverse image search** using Bing, Google, TinEye and Yandex (one at the time or all at once).
 
-The same functionalties are available in the right-click menu.
+The same functionalities are available in the right-click menu.
 
 ## Adding *Searcher* to browsers
 
-This extension has two version, one for *Chromium browsers* (**Chrome**, **Brave**, **Edge**, etc.) and one for *Gecko browsers* like **Firefox**. Soon it should be available in the official Chrome, Edge and Firefox addons and extensions store. In the meantime, it can be used as a *local imported extension*:
+This extension has two version, one for *Chromium browsers* (**Chrome**, **Brave**, **Edge**, etc.) and one for *Gecko browsers* like **Firefox** (109 and above). Soon it should be available in the official Chrome and Firefox extensions sites. In the meantime, it can be used as a *local imported extension*:
 - for **Chromium** browsers: go to *Extensions*, enable *Developer mode*, click on *Load unpacked* and then choose the folder that contains the files
 - for **Gecko** browsers: type *about:debugging* in the address bar, click on *This Firefox* (or similar) in the sidebar, then click on *Load Temporary Add-on* and select the "manifest.json" file from the extension folder.
 
