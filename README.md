@@ -22,7 +22,9 @@ The same functionalities are available in the right-click menu.
 
 ## Adding *Searcher* to browsers
 
-This extension has two version, one for *Chromium browsers* (**Chrome**, **Brave**, **Edge**, etc.) and one for *Gecko browsers* like **Firefox** (109 and above). Soon it should be available in the official Chrome and Firefox extensions sites. In the meantime, it can be used as a *local imported extension*:
+This extension has two versions, one for *Chromium browsers* (**Chrome**, **Brave**, **Edge**, etc.) and one for *Gecko browsers* like **Firefox** (109 and above). It's already available in its **Firefox extension page** [here](https://addons.mozilla.org/it/firefox/addon/searcher_en-it/).
+
+Anyway, it can be used as a *local imported extension*:
 - for **Chromium** browsers: go to *Extensions*, enable *Developer mode*, click on *Load unpacked* and then choose the folder that contains the files
 - for **Gecko** browsers: type *about:debugging* in the address bar, click on *This Firefox* (or similar) in the sidebar, then click on *Load Temporary Add-on* and select the "manifest.json" file from the extension folder.
 
