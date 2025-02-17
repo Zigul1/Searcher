@@ -1,5 +1,5 @@
 # Searcher
-(articolo in italiano [qui](https://turbolab.it/browser-455/searcher-estensione-velocizzare-ricerche-web-4291)  ![image](https://github.com/user-attachments/assets/fff61062-49ca-4c48-b82e-c1515ac544dc)
+(articolo in italiano [qui](https://turbolab.it/browser-455/searcher-estensione-velocizzare-ricerche-web-4291)  ![image](https://github.com/user-attachments/assets/fff61062-49ca-4c48-b82e-c1515ac544dc), video YouTube [qui](https://www.youtube.com/watch?v=iRFao5h8q4w)
 )
 
 ## What *Searcher* does
