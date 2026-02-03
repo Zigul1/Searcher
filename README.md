@@ -33,11 +33,12 @@ It can be used as a *local imported extension*:
 ## How to use it
 
 Once the extension is loaded in the browser, it will show an **icon on the toolbar**; clicking on the icon will open the **popup menu** with all the available options. It has **light or dark mode** and two languages (**English** or **Italian**). For more usage details, click on *Instructions*.
-![darkEn](https://github.com/user-attachments/assets/cfd228ba-adbb-402d-9fdc-0da86099c95c)
-![lightIt](https://github.com/user-attachments/assets/2f7d208d-8bee-442c-9291-d6e8adfba610)
+<img width="1143" height="805" alt="Spopup" src="https://github.com/user-attachments/assets/b0a9fd1b-2a5b-4480-80a8-73fabf5acd66" />
+
 
 On the **right-click menu**, the submenu *Searcher* is added with most of the functions, some of them in the submenu "Extras".
-![rClick](https://github.com/user-attachments/assets/6c661468-dcdc-464c-a7b0-a2f497e29237)
+<img width="982" height="837" alt="Smenu" src="https://github.com/user-attachments/assets/a4f26908-0742-4d6b-b388-6153b502e106" />
+
 
 
 ## Permissions
