@@ -67,34 +67,46 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateLanguage(language) {
         if (language == 'en') {
 			instruct.innerText = 'INSTRUCTIONS';
-			allAi.innerText = "ALL"
+			allAi.innerText = "ALL";
 			ma.innerText = 'M A P S';
 			img.innerText = 'I M A G E S';
 			imgR.innerText = 'I M A G E S (reverse search)';
 			text1.innerText = 'Select text in the webpage OR';
 			text2.innerText = 'copy text from an external document OR';
 			text3.innerText = 'write text below and click OK';
-			choice.innerText = 'Choose below where to search for the text';
+			choice.innerHTML = 'Choose below where to search for the text. <br> For searching, <strong>new tabs</strong> will be opened.';
 			text4.innerText = 'Copy the image web path (right click)';
 			text5.innerText = 'Choose below where to search for the image';
-			allImg.innerText = "ALL"
-			allImgR.innerText = "ALL"
-			return wikip = "https://en.wikipedia.org/wiki/", intro = "Write a short explanation about: ";
+			allImg.innerText = "ALL";
+			allImgR.innerText = "ALL";
+			allUrl.innerText = "ALL";
+			text6.innerText = "Select or copy a link and click below to open it in the Browserling online \n proxy (with limitations).";
+			unS.innerText = "UNSHORT URL";
+			text7.innerText = "Select or copy a shortned link and click below to discover its actual address.";
+			chU.innerText = "CHECK ADDRESS";
+			text8.innerText = "Select or copy the full address and click below to verify its reputation or \n if it's online or if there are archived snapshots.";
+			return wikip = "https://en.wikipedia.org/wiki/", intro = "Write a short explanation about ";
         } else if (language == 'it') {
 			instruct.innerText = "ISTRUZIONI";
 			ma.innerText = 'M A P P E';
-			allAi.innerText = "TUTTI"
+			allAi.innerText = "TUTTI";
 			img.innerText = 'I M M A G I N I';
 			imgR.innerText = 'I M M A G I N I (ricerca inversa)';
-			text1.innerText = 'Seleziona il testo nella pagina web OPPURE';
-			text2.innerText = 'copia il testo dal documento esterno OPPURE';
-			text3.innerText = 'scrivi il testo qui sotto e premi OK';
-			choice.innerText = 'Scegli sotto dove cercare il testo';
-			text4.innerText = "Copia il percorso web dell'immagine";
-			text5.innerText = "Scegli sotto dove cercare l'immagine";
-			allImg.innerText = "TUTTI"
-			allImgR.innerText = "TUTTI"
-			return wikip = "https://it.wikipedia.org/wiki/", intro = "Scrivi una breve spiegazione riguardo: ";
+			text1.innerText = 'Selezionare il testo nella pagina web OPPURE';
+			text2.innerText = 'copiare il testo da un documento esterno OPPURE';
+			text3.innerText = 'scrivere il testo qui sotto e premi OK';
+			choice.innerHTML = 'Scegliere sotto dove cercare il testo. <br> Per la ricerca verranno aperte <strong>nuove schede</strong>.';
+			text4.innerText = "Copiare il percorso web dell'immagine (tasto destro)";
+			text5.innerText = "Scegliere sotto dove cercare l'immagine";
+			allImg.innerText = "TUTTI";
+			allImgR.innerText = "TUTTI";
+			allUrl.innerText = "TUTTI";
+			text6.innerText = "Selezionare o copiare un link e cliccare qui sotto per aprirlo in uno \n dei proxy online di Browserling (con limitazioni).";
+			unS.innerText = "ESPANSIONE URL";
+			text7.innerText = "Selezionare o copiare il link abbreviato e cliccare un puslante sotto\n per scoprirne l'indirizzo esteso.";
+			chU.innerText = "CONTROLLO INDIRIZZO";
+			text8.innerText = "Selezionare o copiare l'indirizzo completo e cliccare un pulsante sotto\n per verificare la reputazione o se è online o se ci sono versioni archiviate.";
+			return wikip = "https://it.wikipedia.org/wiki/", intro = "Scrivi una breve spiegazione riguardo ";
 			}
     }
 });
@@ -104,12 +116,21 @@ document.addEventListener('DOMContentLoaded', () => {
 document.getElementById("toggleSwitch").addEventListener("change", function() {
     var infos1 = document.getElementById("infos1");
 	var infos2 = document.getElementById("infos2");
+	var infos3 = document.getElementById("infos3");
+	var infos4 = document.getElementById("infos4");
+	var infos5 = document.getElementById("infos5");
     if (this.checked) {
         infos1.classList.remove("hidden");
 		infos2.classList.remove("hidden");
+		infos3.classList.remove("hidden");
+		infos4.classList.remove("hidden");
+		infos5.classList.remove("hidden");
     } else {
         infos1.classList.add("hidden");
 		infos2.classList.add("hidden");
+		infos3.classList.add("hidden");
+		infos4.classList.add("hidden");
+		infos5.classList.add("hidden");
     }
 });
 
@@ -196,7 +217,7 @@ document.getElementById('archive').addEventListener('click', function() {
 
 
 // AISearch
-const phAi = "https://www.phind.com/search?q=";
+const phAi = "https://chatgpt.com/?q=";
 const yAi = "https://you.com/search?q=";
 const fAi = "https://felo.ai/search?q=";
 
@@ -226,12 +247,12 @@ document.getElementById('pAi').addEventListener('click', function() {
 			let text;
 			if (response && response.selectedText) {
 				text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text;
+				let phAddress = phAi + intro + text + "&hints=search";
 				window.open(phAddress, "_blank");
 			} else {
 				navigator.clipboard.readText().then(function (text) {
 					text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text;
+					let phAddress = phAi + intro + text + "&hints=search";
 					window.open(phAddress, "_blank");
 				});
 				return;
@@ -266,7 +287,7 @@ document.getElementById('allAi').addEventListener('click', function() {
             let text;
             if (response && response.selectedText) {
                 text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text;
+				let phAddress = phAi + intro + text + "&hints=search";
 				let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 				let fAddress = fAi + intro + text;
 				chrome.tabs.create({ url: phAddress});
@@ -275,7 +296,7 @@ document.getElementById('allAi').addEventListener('click', function() {
             } else {
                 navigator.clipboard.readText().then(function (text) {
                     text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text;
+					let phAddress = phAi + intro + text + "&hints=search";
 					let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = fAi + intro + text;
 					chrome.tabs.create({ url: phAddress});
@@ -489,6 +510,207 @@ document.getElementById('allImgR').addEventListener('click', function() {
 			chrome.tabs.create({ url: tSearch});
 			let ySearch = "https://yandex.com/images/search?source=collections&&url=" + text + "&rpt=imageview";
 			chrome.tabs.create({ url: ySearch});
+		});
+	});
+});
+
+
+// Browserling sandbox
+document.getElementById('bLing').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let sText;
+			if (response && response.selectedText) {
+				sText = response.selectedText;
+				let sndSearch = "https://www.browserling.com/browse/win10/chrome127/" + sText;
+				chrome.tabs.create({ url: sndSearch });
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+					let sndSearch = "https://www.browserling.com/browse/win10/chrome127/" + text;
+					chrome.tabs.create({ url: sndSearch });
+				});
+				return;
+			}
+		});
+	});
+});
+
+
+// Unshortners
+document.getElementById('tly').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let sUrl;
+			if (response && response.selectedText) {
+				sUrl = response.selectedText;
+				let tlySearch = "https://t.ly/tools/link-expander?url=" + sUrl;
+				chrome.tabs.create({ url: tlySearch });
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+					let tlySearch = "https://t.ly/tools/link-expander?url=" + text;
+					chrome.tabs.create({ url: tlySearch });
+				});
+				return;
+			}
+		});
+	});
+});
+
+document.getElementById('wmd').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let sUrl;
+			if (response && response.selectedText) {
+				sUrl = response.selectedText;
+				let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + sUrl;
+				chrome.tabs.create({ url: wmdSearch });
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+					let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + text;
+					chrome.tabs.create({ url: wmdSearch });
+				});
+				return;
+			}
+		});
+	});
+});
+
+document.getElementById('allUrl').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let sUrl;
+			if (response && response.selectedText) {
+				sUrl = response.selectedText;
+				let tlySearch = "https://t.ly/tools/link-expander?url=" + sUrl;
+				let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + sUrl;
+				chrome.tabs.create({ url: tlySearch });
+				chrome.tabs.create({ url: wmdSearch });
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+				let tlySearch = "https://t.ly/tools/link-expander?url=" + text;
+				let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + text;
+				chrome.tabs.create({ url: tlySearch });
+				chrome.tabs.create({ url: wmdSearch });
+				});
+				return;
+			}
+		});
+	});
+});
+
+
+// URL checkers
+async function calculateSHA256(input) {
+    // Encode the input string as a Uint8Array
+    const encoder = new TextEncoder();
+    const data = encoder.encode(input);
+    // Calculate the hash
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+    // Convert the hash to a hex string
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+    return hashHex;
+}
+
+document.getElementById('chAll').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			if (response && response.selectedText) {
+				let cUrl = response.selectedText;
+				let cUrlsh = cUrl.replace(/^https?:\/\//, '');
+				let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
+				let cUrlGri = cUrlshort.replace(/\./g, '-');
+				let suUrl = "https://sitecheck.sucuri.net/results/" + cUrl;
+				let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
+				let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
+				let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
+				calculateSHA256(cUrl).then(hash => {
+					let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
+					chrome.tabs.create({ url: vtUrl });
+				});
+				chrome.tabs.create({ url: suUrl });
+				chrome.tabs.create({ url: adUrl });
+				chrome.tabs.create({ url: urUrl });
+				chrome.tabs.create({ url: taUrl });
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+				let cUrl = text;
+				let cUrlsh = cUrl.replace(/^https?:\/\//, '');
+				let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
+				let cUrlGri = cUrlshort.replace(/\./g, '-');
+				let suUrl = "https://sitecheck.sucuri.net/results/" + cUrl;
+				let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
+				let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
+				let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
+				calculateSHA256(cUrl).then(hash => {
+					let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
+					chrome.tabs.create({ url: vtUrl });
+				});
+				chrome.tabs.create({ url: suUrl });
+				chrome.tabs.create({ url: adUrl });
+				chrome.tabs.create({ url: urUrl });
+				chrome.tabs.create({ url: taUrl });
+				});
+				return;
+			}
+		});
+	});
+});
+
+
+// Check if online
+document.getElementById('chOn').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let addr;
+			if (response && response.selectedText) {
+				addr = response.selectedText;
+				if (addr.startsWith("http://www.") || addr.startsWith("https://www.") || addr.startsWith("www.")) { 
+					domain = addr.split("www.")[1].split("/")[0];
+				} else if (addr.startsWith("http://") || addr.startsWith("https://")) {
+					domain = addr.split("://")[1].split("/")[0];
+				} else {
+					domain = addr.split("/")[0];
+				};
+				checkAddr = "https://www.isitdownrightnow.com/" + domain + ".html";
+				chrome.tabs.create({ url: checkAddr});
+			} else {
+				navigator.clipboard.readText().then(function (text) {
+					addr = text;
+					if (addr.startsWith("http://www.") || addr.startsWith("https://www.") || addr.startsWith("www.")) { 
+						domain = addr.split("www.")[1].split("/")[0];
+					} else if (addr.startsWith("http://") || addr.startsWith("https://")) {
+						domain = addr.split("://")[1].split("/")[0];
+					} else {
+						domain = addr.split("/")[0];
+					};
+					checkAddr = "https://www.isitdownrightnow.com/" + domain + ".html";
+					chrome.tabs.create({ url: checkAddr});
+				});
+				return;
+			}
+		});
+	});
+});
+
+
+// Wayback
+document.getElementById('chWm').addEventListener('click', function() {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+			let site;
+			if (response && response.selectedText) {
+				site = response.selectedText;
+				checkSite = "https://web.archive.org/web/20250000000000*/" + site;
+				chrome.tabs.create({ url: checkSite});
+			} else {
+				chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+					let site = response.text;
+					checkSite = "https://web.archive.org/web/20250000000000*/" + site;
+					chrome.tabs.create({ url: checkSite});
+				});
+				return;
+			}
 		});
 	});
 });

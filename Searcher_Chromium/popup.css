@@ -11,6 +11,7 @@
 	display: flex;
 	justify-content: space-between;
 	font-size: 14px;
+	margin-top: 10px;
 }
 
 .sectionTitle {
@@ -20,7 +21,7 @@
 	text-align: center;
 	font-weight: bold;
 	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: -5px;
 }
 
 .hidden {

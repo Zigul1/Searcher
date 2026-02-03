@@ -1,8 +1,8 @@
 {
 	"manifest_version": 3,
 	"name": "Searcher",
-	"version": "1.0.0",
-	"description": "Make your searches quicker: select the text in the webpage or type it and then use the right click menu or the extension in the browser toolbar. It can be used also with external documents: just copy the text and choose in the toolbar menu where to search for it among the different choices (including AI chatbots, maps and reverse image search).",
+	"version": "1.1.0",
+	"description": "Make your researches quicker and deeper: select the text in the webpage or type it and then use the right click menu or the extension in the browser toolbar. It can also be used with external documents: just copy the text and choose in the extension menu where to search for it among the different choices (including AI chatbots, maps, reverse image search, unshort link, URL safety, sandboxed proxy and more). This extension will open the search sites in new tabs.",
 	"icons": {
 		"16": "/icons/icon16.png",
 		"32": "/icons/icon32.png",

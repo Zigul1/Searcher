@@ -11,6 +11,7 @@
 	display: flex;
 	justify-content: space-between;
 	font-size: 14px;
+	margin-top: 10px;
 }
 
 .fontOk {
@@ -25,9 +26,15 @@
 	font-weight: bold;
 	font-family: Sans-serif;
 	margin-top: 5px;
-	margin-bottom: 5px;
+	margin-bottom: -5px;
 }
 
 .hidden {
     display: none;
+}
+
+.info {
+	margin: 5px;
+	font-family: Sans-serif;
+	font-size: 12px;
 }

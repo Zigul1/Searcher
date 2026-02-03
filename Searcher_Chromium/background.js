@@ -13,28 +13,24 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "WikiEN",
         title: "Wikipedia (EN)",
         parentId: "Info",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "WikiIT",
         title: "Wikipedia (IT)",
         parentId: "Info",
         contexts: ["all"]
     });
-	
     chrome.contextMenus.create({
         id: "YouTube",
         title: "YouTube",
         parentId: "Info",
         contexts: ["all"]
     });
-
     chrome.contextMenus.create({
         id: "arch",
         title: "archive.org",
@@ -49,29 +45,25 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "fAiEn",
         title: "Felo (EN)",
         parentId: "AI-en",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "pAiEn",
-        title: "Phind (EN)",
+        title: "ChatGPT (EN)",
         parentId: "AI-en",
         contexts: ["all"]
     });
-	
-		chrome.contextMenus.create({
+	chrome.contextMenus.create({
         id: "yAiEn",
         title: "You (EN)",
         parentId: "AI-en",
         contexts: ["all"]
     });
-	
-		chrome.contextMenus.create({
+	chrome.contextMenus.create({
         id: "allAiEn",
         title: "All (EN)",
         parentId: "AI-en",
@@ -85,28 +77,24 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "fAiIt",
         title: "Felo (IT)",
         parentId: "AI-it",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "pAiIt",
-        title: "Phind (IT)",
+        title: "ChatGPT (IT)",
         parentId: "AI-it",
         contexts: ["all"]
     });
-	
-		chrome.contextMenus.create({
+	chrome.contextMenus.create({
         id: "yAiIt",
         title: "You (IT)",
         parentId: "AI-it",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "allAiIt",
         title: "Tutti (IT)",
@@ -121,21 +109,18 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-	
     chrome.contextMenus.create({
         id: "DDGmaps",
         title: "DuckDuckGo maps",
         parentId: "Maps",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "GMaps",
         title: "Google Maps",
         parentId: "Maps",
         contexts: ["all"]
     });
-
     chrome.contextMenus.create({
         id: "OSMap",
         title: "OpenStreetMap",
@@ -150,28 +135,24 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "bImg",
         title: "Bing Images",
         parentId: "Img",
         contexts: ["all"]
     });
-	
     chrome.contextMenus.create({
         id: "gImg",
         title: "Google Images",
         parentId: "Img",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "yImg",
         title: "Yandex Images",
         parentId: "Img",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "allImg",
         title: "All",
@@ -186,44 +167,90 @@ chrome.runtime.onInstalled.addListener(() => {
         parentId: "Searcher",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "bImgR",
         title: "Bing reverse",
         parentId: "ImgR",
         contexts: ["all"]
     });
-
     chrome.contextMenus.create({
         id: "gImgR",
         title: "Google reverse",
         parentId: "ImgR",
         contexts: ["all"]
     });
-	
     chrome.contextMenus.create({
         id: "tImgR",
         title: "TinEye",
         parentId: "ImgR",
         contexts: ["all"]
     });
-
 	chrome.contextMenus.create({
         id: "yImgR",
         title: "Yandex reverse",
         parentId: "ImgR",
         contexts: ["all"]
     });
-	
 	chrome.contextMenus.create({
         id: "allImgR",
         title: "All reverse",
         parentId: "ImgR",
         contexts: ["all"]
     });
-
+	
+	// Create Extras submenu
+    chrome.contextMenus.create({
+        id: "Extras",
+        title: "Extras",
+        parentId: "Searcher",
+        contexts: ["all"]
+    });
+	chrome.contextMenus.create({
+		id: "bLing",
+		title: "Browserling",
+		parentId: "Extras",
+		contexts: ["all"]
+    });
+ 	chrome.contextMenus.create({
+        id: "checkOn",
+        title: "Online-check",
+        parentId: "Extras",
+        contexts: ["all"]
+    });
+	chrome.contextMenus.create({
+        id: "unShort",
+        title: "Unshort URL",
+        parentId: "Extras",
+        contexts: ["all"]
+    });
+	chrome.contextMenus.create({
+        id: "checkUrl",
+        title: "URL-check",
+        parentId: "Extras",
+        contexts: ["all"]
+	});
+	chrome.contextMenus.create({
+        id: "wayB",
+        title: "Wayback",
+        parentId: "Extras",
+        contexts: ["all"]
+    });
 });
 
+
+// Hash function for VirusTotal "breadcumb"
+// Get hash function
+async function calculateSHA256(input) {
+// Encode the input string as a Uint8Array
+const encoder = new TextEncoder();
+const data = encoder.encode(input);
+// Calculate the hash
+const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+// Convert the hash to a hex string
+const hashArray = Array.from(new Uint8Array(hashBuffer));
+const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+return hashHex;
+}
 
 // Submenus actions
 chrome.contextMenus.onClicked.addListener((info, tab) => {
@@ -328,16 +355,16 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 	// Phind Ai en
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
-				intro = "Write a short explanation about: ";
+				intro = "Write a short explanation about ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://www.phind.com/search?q=" + intro + text;
+					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 					chrome.tabs.create({ url: phAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://www.phind.com/search?q=" + intro + text;
+						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 						chrome.tabs.create({ url: phAddress });
 					});
 					return;
@@ -368,11 +395,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 	// All Ai en
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
-				intro = "Write a short explanation about: ";
+				intro = "Write a short explanation about ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://www.phind.com/search?q=" + intro + text;
+					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
@@ -381,7 +408,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://www.phind.com/search?q=" + intro + text;
+						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
@@ -416,16 +443,16 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 	// Phind Ai it
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
-				intro = "Scrivi una breve spiegazione riguardo: ";
+				intro = "Scrivi una breve spiegazione riguardo ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://www.phind.com/search?q=" + intro + text;
+					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 					chrome.tabs.create({ url: phAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://www.phind.com/search?q=" + intro + text;
+						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 						chrome.tabs.create({ url: phAddress });
 					});
 					return;
@@ -456,11 +483,11 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 	// All AI it
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
-				intro = "Scrivi una breve spiegazione riguardo: "
+				intro = "Scrivi una breve spiegazione riguardo "
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://www.phind.com/search?q=" + intro + text;
+					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
@@ -469,7 +496,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://www.phind.com/search?q=" + intro + text;
+						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
 						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
@@ -672,5 +699,139 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				chrome.tabs.create({ url: ySearch });
 			});
 		});
-	} 
+	} else if (info.menuItemId === "bLing") {
+	// Browserling
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+				let sText = response.text;
+				if (response && response.selectedText) {
+					sText = response.selectedText;
+					let sndSearch = "https://www.browserling.com/browse/win10/chrome127/" + sText;
+					chrome.tabs.create({ url: sndSearch});
+				} else {
+				let sndSearch = "https://www.browserling.com/browse/win10/chrome127/" + sText;
+				chrome.tabs.create({ url: sndSearch });
+				};
+			});
+		});
+	} else if (info.menuItemId === "unShort") {
+	// Unshort URL		
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+				let sUrl;
+				if (response && response.selectedText) {
+					sUrl = response.selectedText;
+					let tlySearch = "https://t.ly/tools/link-expander?url=" + sUrl;
+					let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + sUrl;
+					chrome.tabs.create({ url: tlySearch});
+					chrome.tabs.create({ url: wmdSearch});
+				} else {
+					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+						text = response.text
+						let tlySearch = "https://t.ly/tools/link-expander?url=" + text;
+						let wmdSearch = "https://www.whatsmydns.net/url-unshortener?q=" + text;
+						chrome.tabs.create({ url: tlySearch});
+						chrome.tabs.create({ url: wmdSearch});
+						});
+					return;
+				}
+			});
+		});
+	} else if (info.menuItemId === "checkOn") {
+	// Check if site is online
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+				let addr;
+				if (response && response.selectedText) {
+					addr = response.selectedText;
+					if (addr.startsWith("http://www.") || addr.startsWith("https://www.") || addr.startsWith("www.")) { 
+						domain = addr.split("www.")[1].split("/")[0];
+					} else if (addr.startsWith("http://") || addr.startsWith("https://")) {
+						domain = addr.split("://")[1].split("/")[0];
+					} else {
+						domain = addr.split("/")[0];
+					};
+					checkAddr = "https://www.isitdownrightnow.com/" + domain + ".html";
+					chrome.tabs.create({ url: checkAddr});
+				} else {
+					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+						addr = response.text;
+						if (addr.startsWith("http://www.") || addr.startsWith("https://www.") || addr.startsWith("www.")) { 
+							domain = addr.split("www.")[1].split("/")[0];
+						} else if (addr.startsWith("http://") || addr.startsWith("https://")) {
+							domain = addr.split("://")[1].split("/")[0];
+						} else {
+							domain = addr.split("/")[0];
+						};
+						checkAddr = "https://www.isitdownrightnow.com/" + domain + ".html";
+						chrome.tabs.create({ url: checkAddr});
+					});
+					return;
+				}
+			});
+		});
+	} else if (info.menuItemId === "wayB") {
+	// Wayback machine
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+				let site;
+				if (response && response.selectedText) {
+					site = response.selectedText;
+					checkSite = "https://web.archive.org/web/20250000000000*/" + site;
+					chrome.tabs.create({ url: checkSite});
+				} else {
+					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+						let site = response.text;
+						checkSite = "https://web.archive.org/web/20250000000000*/" + site;
+						chrome.tabs.create({ url: checkSite});
+					});
+					return;
+				}
+			});
+		});
+	} else if (info.menuItemId === "checkUrl") {
+	// URL checkers
+		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
+				if (response && response.selectedText) {
+					let cUrl = response.selectedText;
+					let cUrlsh = cUrl.replace(/^https?:\/\//, '');
+					let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
+					let cUrlGri = cUrlshort.replace(/\./g, '-');
+					let suUrl = "https://sitecheck.sucuri.net/results/" + cUrl;
+					let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
+					let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
+					let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
+					calculateSHA256(cUrl).then(hash => {
+						let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
+						chrome.tabs.create({ url: vtUrl });
+					});
+					chrome.tabs.create({ url: suUrl });
+					chrome.tabs.create({ url: adUrl });
+					chrome.tabs.create({ url: urUrl });
+					chrome.tabs.create({ url: taUrl });
+				} else {
+					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
+						let cUrl = response.text;
+						let cUrlsh = cUrl.replace(/^https?:\/\//, '');
+						let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
+						let cUrlGri = cUrlshort.replace(/\./g, '-');
+						let suUrl = "https://sitecheck.sucuri.net/results/" + cUrl;
+						let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
+						let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
+						let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
+						calculateSHA256(cUrl).then(hash => {
+							let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
+							chrome.tabs.create({ url: vtUrl });
+						});
+						chrome.tabs.create({ url: suUrl });
+						chrome.tabs.create({ url: adUrl });
+						chrome.tabs.create({ url: urUrl });
+						chrome.tabs.create({ url: taUrl });
+					});
+					return;
+				}
+			});
+		});
+	}
 });
