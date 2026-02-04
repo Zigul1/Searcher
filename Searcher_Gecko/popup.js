@@ -94,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			imgR.innerText = 'I M M A G I N I (ricerca inversa)';
 			text1.innerText = 'Selezionare il testo nella pagina web OPPURE';
 			text2.innerText = 'copiare il testo da un documento esterno OPPURE';
-			text3.innerText = 'scrivere il testo qui sotto e premi OK';
+			text3.innerText = 'scrivere il testo qui sotto e premere OK';
 			choice.innerHTML = 'Scegliere sotto dove cercare il testo. <br> Per la ricerca verranno aperte <strong>nuove schede</strong>.';
 			text4.innerText = "Copiare il percorso web dell'immagine (tasto destro)";
 			text5.innerText = "Scegliere sotto dove cercare l'immagine";
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			allUrl.innerText = "TUTTI";
 			text6.innerText = "Selezionare o copiare un link e cliccare qui sotto per aprirlo in uno \n dei proxy online di Browserling (con limitazioni).";
 			unS.innerText = "ESPANSIONE URL";
-			text7.innerText = "Selezionare o copiare il link abbreviato e cliccare un puslante sotto\n per scoprirne l'indirizzo esteso.";
+			text7.innerText = "Selezionare o copiare il link abbreviato e cliccare un pulsante sotto\n per scoprirne l'indirizzo esteso.";
 			chU.innerText = "CONTROLLO INDIRIZZO";
 			text8.innerText = "Selezionare o copiare l'indirizzo completo e cliccare un pulsante sotto\n per verificare la reputazione o se è online o se ci sono versioni archiviate.";
 			return wikip = "https://it.wikipedia.org/wiki/", intro = "Scrivi una breve spiegazione riguardo ";
