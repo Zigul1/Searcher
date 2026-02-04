@@ -247,12 +247,12 @@ document.getElementById('pAi').addEventListener('click', function() {
 			let text;
 			if (response && response.selectedText) {
 				text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text + "&hints=search";
+				let phAddress = phAi + intro + text;
 				window.open(phAddress, "_blank");
 			} else {
 				navigator.clipboard.readText().then(function (text) {
 					text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text + "&hints=search";
+					let phAddress = phAi + intro + text;
 					window.open(phAddress, "_blank");
 				});
 				return;
@@ -287,7 +287,7 @@ document.getElementById('allAi').addEventListener('click', function() {
             let text;
             if (response && response.selectedText) {
                 text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text + "&hints=search";
+				let phAddress = phAi + intro + text;
 				let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 				let fAddress = fAi + intro + text;
 				chrome.tabs.create({ url: phAddress});
@@ -296,7 +296,7 @@ document.getElementById('allAi').addEventListener('click', function() {
             } else {
                 navigator.clipboard.readText().then(function (text) {
                     text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text + "&hints=search";
+					let phAddress = phAi + intro + text;
 					let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = fAi + intro + text;
 					chrome.tabs.create({ url: phAddress});

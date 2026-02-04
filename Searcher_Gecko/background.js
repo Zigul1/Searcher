@@ -352,19 +352,19 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 			});
 		});
 	} else if (info.menuItemId === "pAiEn") {
-	// Phind Ai en
+	// ChatGPT Ai en
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 				intro = "Write a short explanation about ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+					let phAddress = "https://chatgpt.com/?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+						let phAddress = "https://chatgpt.com/?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
 					});
 					return;
@@ -399,7 +399,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+					let phAddress = "https://chatgpt.com/?q=" + intro + text;
 					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
@@ -408,7 +408,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+						let phAddress = "https://chatgpt.com/?q=" + intro + text;
 						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
@@ -440,19 +440,19 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 			});
 		});
 	} else if (info.menuItemId === "pAiIt") {
-	// Phind Ai it
+	// ChatGPT Ai it
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 				intro = "Scrivi una breve spiegazione riguardo ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+					let phAddress = "https://chatgpt.com/?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+						let phAddress = "https://chatgpt.com/?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
 					});
 					return;
@@ -487,7 +487,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+					let phAddress = "https://chatgpt.com/?q=" + intro + text;
 					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
@@ -496,7 +496,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let phAddress = "https://chatgpt.com/?q=" + intro + text + "&hints=search";
+						let phAddress = "https://chatgpt.com/?q=" + intro + text;
 						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
