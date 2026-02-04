@@ -704,8 +704,8 @@ document.getElementById('chWm').addEventListener('click', function() {
 				checkSite = "https://web.archive.org/web/20250000000000*/" + site;
 				chrome.tabs.create({ url: checkSite});
 			} else {
-				chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
-					let site = response.text;
+				navigator.clipboard.readText().then(function (text) {
+					let site = text;
 					checkSite = "https://web.archive.org/web/20250000000000*/" + site;
 					chrome.tabs.create({ url: checkSite});
 				});
