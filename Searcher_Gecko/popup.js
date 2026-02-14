@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			allUrl.innerText = "ALL";
 			text6.innerText = "Select or copy a link and click below to open it in the Browserling online \n proxy (with limitations).";
 			unS.innerText = "UNSHORT URL";
-			text7.innerText = "Select or copy a shortned link and click below to discover its actual address.";
+			text7.innerText = "Select or copy a shortened link and click below to discover its actual address.";
 			chU.innerText = "CHECK ADDRESS";
 			text8.innerText = "Select or copy the full address and click below to verify its reputation or \n if it's online or if there are archived snapshots.";
 			return wikip = "https://en.wikipedia.org/wiki/", intro = "Write a short explanation about ";
@@ -536,7 +536,7 @@ document.getElementById('bLing').addEventListener('click', function() {
 });
 
 
-// Unshortners
+// Unshorteners
 document.getElementById('tly').addEventListener('click', function() {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
@@ -617,6 +617,7 @@ document.getElementById('chAll').addEventListener('click', function() {
 		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 			if (response && response.selectedText) {
 				let cUrl = response.selectedText;
+				let cUrlVt = cUrl.endsWith('/') ? cUrl : `${cUrl}/`;
 				let cUrlsh = cUrl.replace(/^https?:\/\//, '');
 				let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
 				let cUrlGri = cUrlshort.replace(/\./g, '-');
@@ -624,7 +625,7 @@ document.getElementById('chAll').addEventListener('click', function() {
 				let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
 				let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
 				let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
-				calculateSHA256(cUrl).then(hash => {
+				calculateSHA256(cUrlVt).then(hash => {
 					let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
 					chrome.tabs.create({ url: vtUrl });
 				});
@@ -635,6 +636,7 @@ document.getElementById('chAll').addEventListener('click', function() {
 			} else {
 				navigator.clipboard.readText().then(function (text) {
 				let cUrl = text;
+				let cUrlVt = cUrl.endsWith('/') ? cUrl : `${cUrl}/`;
 				let cUrlsh = cUrl.replace(/^https?:\/\//, '');
 				let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
 				let cUrlGri = cUrlshort.replace(/\./g, '-');
@@ -642,7 +644,7 @@ document.getElementById('chAll').addEventListener('click', function() {
 				let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
 				let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
 				let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
-				calculateSHA256(cUrl).then(hash => {
+				calculateSHA256(cUrlVt).then(hash => {
 					let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
 					chrome.tabs.create({ url: vtUrl });
 				});

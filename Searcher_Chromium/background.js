@@ -795,6 +795,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 				if (response && response.selectedText) {
 					let cUrl = response.selectedText;
+					let cUrlVt = cUrl.endsWith('/') ? cUrl : `${cUrl}/`;
 					let cUrlsh = cUrl.replace(/^https?:\/\//, '');
 					let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
 					let cUrlGri = cUrlshort.replace(/\./g, '-');
@@ -802,7 +803,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 					let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
 					let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
 					let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
-					calculateSHA256(cUrl).then(hash => {
+					calculateSHA256(cUrlVt).then(hash => {
 						let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
 						chrome.tabs.create({ url: vtUrl });
 					});
@@ -813,6 +814,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						let cUrl = response.text;
+						let cUrlVt = cUrl.endsWith('/') ? cUrl : `${cUrl}/`;
 						let cUrlsh = cUrl.replace(/^https?:\/\//, '');
 						let cUrlshort = cUrl.replace(/^https?:\/\/(www\.)?/, '') || cUrl.replace(/^https?:\/\//, '');
 						let cUrlGri = cUrlshort.replace(/\./g, '-');
@@ -820,7 +822,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 						let adUrl = "https://www.scamadviser.com/check-website/" + cUrlsh;
 						let urUrl = "https://www.urlvoid.com/scan/" + cUrlshort;
 						let taUrl = "https://www.talosintelligence.com/reputation_center/lookup?search=" + cUrl;
-						calculateSHA256(cUrl).then(hash => {
+						calculateSHA256(cUrlVt).then(hash => {
 							let vtUrl = "https://www.virustotal.com/gui/url/" + hash;
 							chrome.tabs.create({ url: vtUrl });
 						});
