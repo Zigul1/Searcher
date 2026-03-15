@@ -46,6 +46,12 @@ chrome.runtime.onInstalled.addListener(() => {
         contexts: ["all"]
     });
 	chrome.contextMenus.create({
+        id: "gAiEn",
+        title: "ChatGPT (EN)",
+        parentId: "AI-en",
+        contexts: ["all"]
+    });
+	chrome.contextMenus.create({
         id: "fAiEn",
         title: "Felo (EN)",
         parentId: "AI-en",
@@ -53,13 +59,7 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 	chrome.contextMenus.create({
         id: "pAiEn",
-        title: "ChatGPT (EN)",
-        parentId: "AI-en",
-        contexts: ["all"]
-    });
-	chrome.contextMenus.create({
-        id: "yAiEn",
-        title: "You (EN)",
+        title: "Perplexity (EN)",
         parentId: "AI-en",
         contexts: ["all"]
     });
@@ -78,6 +78,12 @@ chrome.runtime.onInstalled.addListener(() => {
         contexts: ["all"]
     });
 	chrome.contextMenus.create({
+        id: "gAiIt",
+        title: "ChatGPT (IT)",
+        parentId: "AI-it",
+        contexts: ["all"]
+    });
+	chrome.contextMenus.create({
         id: "fAiIt",
         title: "Felo (IT)",
         parentId: "AI-it",
@@ -85,13 +91,7 @@ chrome.runtime.onInstalled.addListener(() => {
     });
 	chrome.contextMenus.create({
         id: "pAiIt",
-        title: "ChatGPT (IT)",
-        parentId: "AI-it",
-        contexts: ["all"]
-    });
-	chrome.contextMenus.create({
-        id: "yAiIt",
-        title: "You (IT)",
+        title: "Perplexity (IT)",
         parentId: "AI-it",
         contexts: ["all"]
     });
@@ -351,7 +351,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				}
 			});
 		});
-	} else if (info.menuItemId === "pAiEn") {
+	} else if (info.menuItemId === "gAiEn") {
 	// ChatGPT Ai en
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
@@ -371,20 +371,20 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				}
 			});
 		});
-	} else if (info.menuItemId === "yAiEn") {
-	// You Ai en
+	} else if (info.menuItemId === "pAiEn") {
+	// Perplexity Ai en
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 				intro = "Write a short explanation about: ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: yAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+						let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: yAddress });
 					});
 					return;
@@ -400,7 +400,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
 					let phAddress = "https://chatgpt.com/?q=" + intro + text;
-					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
 					chrome.tabs.create({ url: yAddress });
@@ -409,7 +409,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
 						let phAddress = "https://chatgpt.com/?q=" + intro + text;
-						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+						let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
 						chrome.tabs.create({ url: yAddress });
@@ -460,19 +460,19 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 			});
 		});
 	} else if (info.menuItemId === "yAiIt") {
-	// You Ai it
+	// Perplexity Ai it
 		chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 			chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
-				intro = "Scrivi una breve spiegazione riguardo: ";
+				intro = "Scrivi una breve spiegazione riguardo ";
 				let text;
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
-					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;;
 					chrome.tabs.create({ url: yAddress });
 				} else {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
-						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+						let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: yAddress });
 					});
 					return;
@@ -488,7 +488,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 				if (response && response.selectedText) {
 					text = response.selectedText.replace(/ /g, "+");
 					let phAddress = "https://chatgpt.com/?q=" + intro + text;
-					let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 					let fAddress = "https://felo.ai/search?q=" + intro + text;
 					chrome.tabs.create({ url: phAddress });
 					chrome.tabs.create({ url: yAddress });
@@ -497,7 +497,7 @@ chrome.contextMenus.onClicked.addListener((info, tab) => {
 					chrome.tabs.sendMessage(tabs[0].id, { action: "readClipboard" }, (response) => {
 						text = response.text.replace(/ /g, "+");
 						let phAddress = "https://chatgpt.com/?q=" + intro + text;
-						let yAddress = "https://you.com/search?q=" + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+						let yAddress = "https://www.perplexity.ai/search?q=" + intro + text;
 						let fAddress = "https://felo.ai/search?q=" + intro + text;
 						chrome.tabs.create({ url: phAddress });
 						chrome.tabs.create({ url: yAddress });

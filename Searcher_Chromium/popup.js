@@ -211,8 +211,8 @@ document.getElementById('archive').addEventListener('click', function() {
 
 
 // AISearch
-const phAi = "https://chatgpt.com/?q=";
-const yAi = "https://you.com/search?q=";
+const gAi = "https://chatgpt.com/?q=";
+const pAi = "https://www.perplexity.ai/search?q=";
 const fAi = "https://felo.ai/search?q=";
 
 document.getElementById('fAi').addEventListener('click', function() {
@@ -235,18 +235,18 @@ document.getElementById('fAi').addEventListener('click', function() {
 	});
 });
 
-document.getElementById('pAi').addEventListener('click', function() {
+document.getElementById('gAi').addEventListener('click', function() {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 			let text;
 			if (response && response.selectedText) {
 				text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text;
+				let phAddress = gAi + intro + text;
 				window.open(phAddress, "_blank");
 			} else {
 				navigator.clipboard.readText().then(function (text) {
 					text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text;
+					let phAddress = gAi + intro + text;
 					window.open(phAddress, "_blank");
 				});
 				return;
@@ -255,18 +255,18 @@ document.getElementById('pAi').addEventListener('click', function() {
 	});
 });
 
-document.getElementById('yAi').addEventListener('click', function() {
+document.getElementById('pAi').addEventListener('click', function() {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.tabs.sendMessage(tabs[0].id, { action: "getSelectedText" }, (response) => {
 			let text;
 			if (response && response.selectedText) {
 				text = response.selectedText.replace(/ /g, "+");
-				let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+				let yAddress = pAi + intro + text;
 				window.open(yAddress, "_blank");
 			} else {
 				navigator.clipboard.readText().then(function (text) {
 					text = text.replace(/ /g, "+");
-					let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let yAddress = pAi + intro + text;
 					window.open(yAddress, "_blank");
 				});
 				return;
@@ -281,8 +281,8 @@ document.getElementById('allAi').addEventListener('click', function() {
             let text;
             if (response && response.selectedText) {
                 text = response.selectedText.replace(/ /g, "+");
-				let phAddress = phAi + intro + text;
-				let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+				let phAddress = gAi + intro + text;
+				let yAddress = pAi + intro + text;
 				let fAddress = fAi + intro + text;
 				chrome.tabs.create({ url: phAddress });
 				chrome.tabs.create({ url: yAddress });
@@ -290,8 +290,8 @@ document.getElementById('allAi').addEventListener('click', function() {
             } else {
                 navigator.clipboard.readText().then(function (text) {
                     text = text.replace(/ /g, "+");
-					let phAddress = phAi + intro + text;
-					let yAddress = yAi + intro + text + "&fromSearchBar=true&tbm=youchat&chatMode=default";
+					let phAddress = gAi + intro + text;
+					let yAddress = pAi + intro + text;
 					let fAddress = fAi + intro + text;
 					chrome.tabs.create({ url: phAddress });
 					chrome.tabs.create({ url: yAddress });
