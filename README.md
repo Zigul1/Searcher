@@ -13,7 +13,7 @@ Once the text is chosen, the user can click on the toolbar popup buttons to **op
 
 The user can search for the chosen text:
 - in **Wikipedia**, **YouTube** or **archive.org**
-- asking about it to **3 AI chatbots** (ChatGPT, Felo, You; one at the time or all three at once; if so, 3 new tabs will open)
+- asking about it to **3 AI chatbots** (ChatGPT, Felo, Perplexity; one at the time or all three at once; if so, 3 new tabs will open)
 - as location in **3 online maps** (DuckDuckGo, Google, OpenStreetMap)
 - as prompt for **images search** (Bing, Google, Yandex, one at the time or all three at once)
 - if the user copies an *image web address* (not the image itself), he can also make a **reverse image search** using Bing, Google, TinEye and Yandex (one at the time or all at once)
